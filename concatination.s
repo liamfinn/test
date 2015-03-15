@@ -1,7 +1,8 @@
 .data
-	A:    .word 0
-	B:    .word 1
-	C:	  .word 20
+	a: .asciiz "Hello"
+	b: .asciiz " World"
+	c: .asciiz "XXXXXXXXXXXXXXXXXXXX" ; Space for the concatenated string.
+
 	CONTROL: .word 0x10000
 	DATA:    .word 0x10008
 	
@@ -10,6 +11,7 @@
 	ld r21,DATA(r0)    ; load DATA address
 	
 main:
+	
 
 done:
     halt          
