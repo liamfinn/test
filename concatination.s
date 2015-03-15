@@ -21,9 +21,8 @@ loop:
 	lb r3,c(r1)
 	sb r2,c(r1)	;place it in i in c
 	sb r3,a(r1)
-	daddi r1,r1,1 ;i++
+	daddi r1,r1,2 ;i++
 	j loop
-daddi r1,r1,2
 
 done:
 
@@ -35,6 +34,7 @@ loop2:
 	sb r2,c(r1)	;place it in i in c
 	sb r3,b(r4)
 	daddi r1,r1,2 ;i=i+2
+	daddi r4,r4,2
 	j loop2
 
 done2:
