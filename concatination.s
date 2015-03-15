@@ -17,13 +17,27 @@ main:
 	;place string a into c
 loop:
 	lb r2,a(r1)	;load byte i from a
-	beqz r3,done ; we're done if the byte we read is zero
+	beqz r2,done ; we're done if the byte we read is zero
+	lb r3,c(r1)
 	sb r2,c(r1)	;place it in i in c
+	sb r3,a(r1)
 	daddi r1,r1,1 ;i++
 	j loop
-	;place string b into c+space for a
+daddi r1,r1,2
 
 done:
+
+	daddi r4,r0,0
+loop2:
+	lb r2,b(r4)	;load byte i from b
+	beqz r2,done2 ; we're done if the byte we read is zero
+	lb r3,c(r1)
+	sb r2,c(r1)	;place it in i in c
+	sb r3,b(r4)
+	daddi r1,r1,2 ;i=i+2
+	j loop2
+
+done2:
 
 	daddi r1,r0,c
 	sd r1,0(r21)     ; set DATA to output value (address of string, here)
